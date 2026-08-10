@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farma Click</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="../img/logo da farmácia.jpg" alt="logo Farma Click">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="ativo">inicio</a></li>
+                <li><a href="produtos.html">produtos</a></li>
+                <li><a href="carrinho.html">carrinho</a></li>
+                <li><a href="Recitas.html">receitas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner da Farma">
+        <img src="../img/banner. jpeg.jpg" alt="banner da farmácia">
+    </section>
+
+    <section class="Beneficios">
+        <h2>Beneficios</h2>
+
+        <div class="icone-beneficios">
+            <span class="icone-beneficios"></span>
+            <img src="../img/caminhãozinho.jpg" alt="logo de caminhãozinho">
+            <h3>Entrega Expresa</h3>
+            <p>Receba seu pedido em Florianópolis no mesmo dia ou agende um horário.</p>
+        </div>
+
+        <div class="icone-beneficios">
+            <span class="icone-beneficios"></span>
+            <img src="../img/atendimento.jpg" alt="logo de atendimento">
+            <h3>Atendimento Farmacêutico </h3>
+            <p>Tire suas dúvidas sobre medicamentos direto com nossos farmacêuticos.</p>
+        </div>
+
+        <div class="icone-beneficios">
+            <span class="icone-beneficios"></span>
+            <h3>Pagemento Facilitado</h3>
+            <p>Desconto no PIX e parcelamentos no cartão sem juros</p>
+        </div>
+
+        <div class="icone-beneficios">
+            <span class="icone-beneficios"></span>
+            <h3>Retirada da Loja</h3>
+            <P>Compre pelo site e retire na loja sem pegar filas na loja física</P>
+        </div>
+    </section>
+
+    <section class="categorias">
+        <h2>Categorias em Destaques</h2>
+        <div class="grid-categorias">
+            <a href="produtos.html" class="card-categorias">
+                <h3>Medicamentos</h3>
+            </a>
+
+            <a href="produtos.html" class="card-categorias">
+                <h3>Cosmédicos</h3>
+            </a>
+
+            <a href="produtos.html" class="card-categorias">
+                <h3> Higiene pessoal</h3>
+            </a>
+
+            <a href="produtos.html" class="card-categorias">
+                <h3>Infantil</h3>
+            </a>
+        </div>
+    </section>
+
+    <section class="envio-receita">
+        <h2>Precisa comprar com receita médica?</h2>
+        <p>Anexe a foto ou o PDF da sua receita abaixo para fazermos o seu orçamento.</p>
+
+        <form class="form-receita">
+            <label for="arquivo-receita" class="label-upload">
+                escolher arquivo da receita
+            </label>
+            <input type="file" id="arquivo-receita" name="receita" accept="image/*, .pdf">
+
+            <button type="submit" class="btn-enviar">Enviar receita</button>
+        </form>
+    </section>
+
+</body>
+
+</html>
