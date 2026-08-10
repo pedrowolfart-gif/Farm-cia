@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar-receita Farma Click</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="../img/logo da farmácia.jpg" alt="logo da farmácia">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+                <li><a href="Recitas.html" class="ativo">Receitas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="envio-receita">
+
+        <main class="conteiner-receita">
+            <h2>Envie sua receita médica</h2>
+            <p>Anexe a foto ou PDF da sua receita abaixo para fazermos o seu orçamento sem sair de cas </p>
+
+            <form class="form-receita">
+
+                <div class="campo">
+                    <label for="nome">Nome completo:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">whatsApp / Telefone:</label>
+                    <input type="tel" name="telefone" id="telefone" placeholder="(48) 99999-9999" required>
+                </div>
+
+                <div class="campo">
+                    <label for="arquivo-receita" class="label-upload">
+                        Escolher arquivo da receita
+                    </label>
+                    <input type="file" name="receita" id="arquivo-receita" accept="image/*, .pdf" required>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar Receita para Orçamento</button>
+            </form>
+    </section>
+    </main>
+
+    <section class="rodape">
+        <footer>
+            <p>Farma Click - Florianópolis</p>
+            <p>Endereço: Servidão Manuel monteiro 03, Canasvieiras - Florianópolis</p>
+            <p>Contato: (48 99641-1475)</p>
+            <p>&copy; 2026 Farma Click. Todos os direitos reservados</p>
+        </footer>
+    </section>
+</body>
+
+</html>
