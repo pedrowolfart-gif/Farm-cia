@@ -13,15 +13,24 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="../img/logo da farmácia.jpg" alt="logo Farma Click">
+                <img src="../img/logo_da_farmácia-removebg-preview.png" alt="logo da farmácia">
             </a>
         </div>
+
+        <div class="buscar-header">
+            <input type="text" id="campo-busca" placeholder="O que deseja encontrar?" onkeyup="filtrarProdutos()">
+            <button type="button" onclick="filtrarProdutos()">
+                Buscar
+            </button>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
-                <li><a href="Receitas.html">Receitas Médicas</a></li>
+                <li><a href="carrinho.html" class="btn-carrinho-header">Carrinho <span
+                            id="contador-carrinho">(0)</span></a></li>
+                <li><a href="receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
@@ -35,26 +44,28 @@
 
         <div class="icone-beneficios">
             <span class="icone-beneficios"></span>
-            <img src="../img/caminhãozinho.jpg" alt="logo de caminhãozinho">
+            <img src="../img/caminhãozinho-removebg-preview.png" alt="logo de caminhãozinho">
             <h3>Entrega Expresa</h3>
             <p>Receba seu pedido em Florianópolis no mesmo dia ou agende um horário.</p>
         </div>
 
         <div class="icone-beneficios">
             <span class="icone-beneficios"></span>
-            <img src="../img/atendimento.jpg" alt="logo de atendimento">
+            <img src="../img/atendimento-removebg-preview.png" alt="logo de atendimento">
             <h3>Atendimento Farmacêutico </h3>
             <p>Tire suas dúvidas sobre medicamentos direto com nossos farmacêuticos.</p>
         </div>
 
         <div class="icone-beneficios">
             <span class="icone-beneficios"></span>
+            <img src="../img/pagamento-removebg-preview.png" alt="logo de pagamento Facilitado">
             <h3>Pagemento Facilitado</h3>
             <p>Desconto no PIX e parcelamentos no cartão sem juros</p>
         </div>
 
         <div class="icone-beneficios">
             <span class="icone-beneficios"></span>
+            <img src="../img/retirada-removebg-preview.png" alt="logo de retirada da loja">
             <h3>Retirada da Loja</h3>
             <P>Compre pelo site e retire na loja sem pegar filas na loja física</P>
         </div>

@@ -13,15 +13,22 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="../img/logo da farmácia.jpg" alt="logo Farma Click">
+                <img src="../img/logo_da_farmácia-removebg-preview.png" alt="logo da farmácia">
             </a>
         </div>
+
+        <div class="buscar-header">
+            <input type="text" id="campo-busca" placeholder="O que deseja encontrar?" onkeyup="filtrarProdutos()">
+            <button type="button" onclick="filtrarProdutos()">Buscar</button>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
-                <li><a href="Receitas.html">Receitas Médicas</a></li>
+                <li><a href="carrinho.html" class="btn-carrinho-header">Carrinho <span
+                            id="contador-carrinho">(0)</span></a></li>
+                <li><a href="receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
@@ -30,12 +37,6 @@
         <section class="topo-produto">
             <h2> Nossos Produtos</h2>
             <p>Confira nossa seleção de medicamentos, Cosméticos e itens de cuidados pessoais.</p>
-
-            <div class="buscar-conteiner">
-                <input type="text" id="campo-busca" placeholder="buscar medicamentos ou produtos..."
-                    onkeyup="filtrarProdutos()">
-                <button type="button" onclick="filtrarProdutos()">Buscar</button>
-            </div>
         </section>
 
         <section class="vitrine-produto">

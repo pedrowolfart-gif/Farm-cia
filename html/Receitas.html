@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar-receita Farma Click</title>
-   <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <script src="../script.js" defer></script>
 </head>
 
@@ -13,15 +13,24 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="../img/logo da farmácia.jpg" alt="logo da farmácia">
+                <img src="../img/logo_da_farmácia-removebg-preview.png" alt="logo da farmácia">
             </a>
         </div>
+
+        <div class="buscar-header">
+            <input type="text" id="campo-busca" placeholder="O que deseja encontrar?" onkeyup="filtrarProdutos()">
+            <button type="button" onclick="filtrarProdutos()">
+                Buscar
+            </button>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-               <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
-                <li><a href="Receitas.html">Receitas Médicas</a></li>
+                <li><a href="carrinho.html" class="btn-carrinho-header">Carrinho <span
+                            id="contador-carrinho">(0)</span></a></li>
+                <li><a href="receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
