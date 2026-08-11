@@ -1,6 +1,5 @@
-let valorFreteGlobal = 0; // Guarda o valor do frete calculado
+let valorFreteGlobal = 0;
 
-// 1. Adicionar produto ao carrinho
 function adicionarAoCarrinho(imagem, nome, preco) {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
     let precoNumerico = parseFloat(preco);
@@ -22,7 +21,6 @@ function adicionarAoCarrinho(imagem, nome, preco) {
     atualizarContadorCarrinho();
 }
 
-// 2. Desenhar a tabela dentro do carrinho.html
 function renderizarCarrinho() {
     const tabelaBody = document.getElementById('lista-carrinho');
     const elementoTotal = document.getElementById('valor-total');
@@ -32,7 +30,6 @@ function renderizarCarrinho() {
 
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
 
-    // Se o carrinho estiver vazio
     if (carrinho.length === 0) {
         tabelaBody.innerHTML = `
             <tr>
@@ -80,7 +77,6 @@ function renderizarCarrinho() {
     }
 }
 
-// 3. Alterar quantidade e remover item do carrinho
 function alterarQuantidade(index, novaQtd) {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
     let quantidade = parseInt(novaQtd);
@@ -101,7 +97,6 @@ function removerItem(index) {
     atualizarContadorCarrinho();
 }
 
-// 4. Calcular Frete (Com mensagens visuais no HTML)
 function calcularFrete() {
     const inputCep = document.getElementById('cep');
     const msgFrete = document.getElementById('mensagem-frete');
@@ -128,7 +123,7 @@ function calcularFrete() {
         return;
     }
 
-    valorFreteGlobal = 10.00; // Frete fixo para Florianópolis
+    valorFreteGlobal = 10.00;
 
     if (msgFrete) {
         msgFrete.style.color = "green";
@@ -138,7 +133,6 @@ function calcularFrete() {
     renderizarCarrinho();
 }
 
-// 5. Filtrar produtos na busca de produtos.html
 function filtrarProdutos() {
     const inputBusca = document.getElementById('campo-busca');
     if (!inputBusca) return;
@@ -158,7 +152,6 @@ function filtrarProdutos() {
     });
 }
 
-// 6. Enviar formulário de Receita
 function enviarReceita(event) {
     event.preventDefault();
 
@@ -170,7 +163,6 @@ function enviarReceita(event) {
     event.target.reset();
 }
 
-// 7. Atualizar contador de itens no menu
 function atualizarContadorCarrinho() {
     const elementoContador = document.getElementById('contador-carrinho');
     if (!elementoContador) return;
@@ -181,7 +173,6 @@ function atualizarContadorCarrinho() {
     elementoContador.innerText = `(${totalItens})`;
 }
 
-// 8. Finalizar Compra e Redirecionar
 function finalizarCompra() {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
 
@@ -194,12 +185,43 @@ function finalizarCompra() {
     localStorage.removeItem('carrinhoFarmaClick');
     valorFreteGlobal = 0;
 
-    // Redireciona o usuário para a página inicial
     window.location.href = "produtos.html";
 }
 
-// Inicializações automáticas
 document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrinho();
     atualizarContadorCarrinho();
+});
+
+function aplicarFiltroCategoriaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const categoriaUrl = params.get('categoria');
+
+    if (!categoriaUrl) return;
+
+    const cards = document.querySelectorAll('.card-produto');
+    const inputBusca = document.getElementById('campo-busca');
+
+    const termoBusca = categoriaUrl.toLowerCase();
+
+    cards.forEach(card => {
+        const categoriaTag = card.querySelector('.categoria-tag') ? card.querySelector('.categoria-tag').innerText.toLowerCase() : '';
+        const titulo = card.querySelector('h3') ? card.querySelector('h3').innerText.toLowerCase() : '';
+
+        if (categoriaTag.includes(termoBusca) || titulo.includes(termoBusca)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (inputBusca) {
+        inputBusca.value = categoriaUrl;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarCarrinho();
+    atualizarContadorCarrinho();
+    aplicarFiltroCategoriaURL(); // <-- Adicionado aqui!
 });
