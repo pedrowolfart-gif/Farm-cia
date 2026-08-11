@@ -20,8 +20,8 @@
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="carrinho.html">Carrinho</a></li>
-                <li><a href="Receitas.html" class="ativo">Receitas Médicas</a></li>
+               <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
+                <li><a href="Receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
@@ -30,9 +30,9 @@
 
         <main class="conteiner-receita">
             <h2>Envie sua receita médica</h2>
-            <p>Anexe a foto ou PDF da sua receita abaixo para fazermos o seu orçamento sem sair de cas </p>
+            <p>Anexe a foto ou PDF da sua receita abaixo para fazermos o seu orçamento sem sair de casa. </p>
 
-            <form class="form-receita">
+            <form class="form-receita" onsubmit="enviarReceita(event)">
 
                 <div class="campo">
                     <label for="nome">Nome completo:</label>

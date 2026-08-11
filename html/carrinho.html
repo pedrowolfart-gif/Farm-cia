@@ -21,8 +21,8 @@
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="carrinho.html" class="ativo">Carrinho</a></li>
-                <li><a href="Receitas.html" >Receitas Médicas</a></li>
+               <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
+                <li><a href="Receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
@@ -49,7 +49,8 @@
                 <h3>Calculo frete / Entrega</h3>
                 <label for="cep">Informe o seu CEP de Florianópolis</label>
                 <input type="text" id="cep" placeholder="88000-000">
-                <button type="button">Calcular</button>
+                <button type="button" onclick="calcularFrete()">Calcular</button>
+                <p id="mensagem-frete" style="margin-top: 8px; font-weight: bold;"></p>
             </div>
 
             <div class="total-compra">

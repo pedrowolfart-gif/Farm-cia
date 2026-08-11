@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto - Farma Click</title>
-   <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <script src="../script.js" defer></script>
 </head>
 
@@ -19,8 +19,8 @@
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="produtos.html" class="ativo">Produtos</a></li>
-                <li><a href="carrinho.html">Carrinho</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="carrinho.html">Carrinho <span id="contador-carrinho">(0)</span></a></li>
                 <li><a href="Receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
@@ -32,8 +32,9 @@
             <p>Confira nossa seleção de medicamentos, Cosméticos e itens de cuidados pessoais.</p>
 
             <div class="buscar-conteiner">
-                <input type="text" placeholder="buscar medicamentos ou produtos...">
-                <button type="button">Buscar</button>
+                <input type="text" id="campo-busca" placeholder="buscar medicamentos ou produtos..."
+                    onkeyup="filtrarProdutos()">
+                <button type="button" onclick="filtrarProdutos()">Buscar</button>
             </div>
         </section>
 
@@ -76,7 +77,8 @@
                 <span class="categoria-tag">Vitaminas</span>
                 <h3>Vitamina c 1000mg</h3>
                 <p class="preço">R$ 15,90</p>
-                <button type="button" class="btn-carrinho" onclick="adicionarAoCarrinho('../img/vitamina c.jpg', 'Vitamina c 1000mg', 15.90)">
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('../img/vitamina c.jpg', 'Vitamina c 1000mg', 15.90)">
                     Adicionar ao Carrinho
                 </button>
             </article>
