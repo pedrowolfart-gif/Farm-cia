@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto - Farma Click</title>
+   <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -17,10 +21,99 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html" class="ativo">Produtos</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
-                <li><a href="Recitas.html">Receitas</a></li>
+                <li><a href="Receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
     </header>
-    
+
+    <main class="conteiner-produtos">
+        <section class="topo-produto">
+            <h2> Nossos Produtos</h2>
+            <p>Confira nossa seleção de medicamentos, Cosméticos e itens de cuidados pessoais.</p>
+
+            <div class="buscar-conteiner">
+                <input type="text" placeholder="buscar medicamentos ou produtos...">
+                <button type="button">Buscar</button>
+            </div>
+        </section>
+
+        <section class="vitrine-produto">
+            <article class="card-produto">
+                <img src="../img/dipirona.jpg" alt="dipirona monoidratada 10 capsulas">
+                <span class="categoria-tag">Medicamentos</span>
+                <h3>Dipirona monoidratada 10 capsulas 10g</h3>
+                <p class="preço">R$: 8,90</p>
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('Dipirona monoidratada 10 capsulas 10g', 8.90)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+
+            <article class="card-produto">
+                <img src="../img/protetor solar.jpg" alt="Protetor solar fps 50">
+                <span class="categoria-tag">Cosméticos</span>
+                <h3>Protetor solar fps 50 - 200ml</h3>
+                <p class="preço">R$ 59,90</p>
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('Protetor solar fps 50 - 200ml', 59.90)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+
+            <article class="card-produto">
+                <img src="../img/sabonete L infantil.jpg" alt="Sabonete liquido infantil">
+                <span class="categoria-tag">Infantil</span>
+                <h3>Sabonete liquido infantil - 400ml</h3>
+                <p class="preço">R$ 24,50</p>
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('Sabonete liquido infantil - 400ml', 24.50)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+
+            <article class="card-produto">
+                <img src="../img/vitamina c.jpg" alt="Vitamina c">
+                <span class="categoria-tag">Vitaminas</span>
+                <h3>Vitamina c 1000mg</h3>
+                <p class="preço">R$ 15,90</p>
+                <button type="button" class="btn-carrinho" onclick="adicionarAoCarrinho('Vitamina c 1000mg', 15.90)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+
+            <article class="card-produto">
+                <img src="../img/creme idratante.jpg" alt="Creme idratente corporal">
+                <span class="categoria-tag">Higiene pessoal</span>
+                <h3>Creme hidratante corporal - 450g</h3>
+                <p class="preço">R$ 32,00</p>
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('Creme hidratante corporal - 450g', 32.00)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+
+            <article class="card-produto">
+                <img src="../img/fralda.jpg" alt="Fralda infantil tam g">
+                <span class="categoria-tag">Infantil</span>
+                <h3>Fralda infantil tam g (34 unidades)</h3>
+                <p class="preço">R$ 45,90</p>
+                <button type="button" class="btn-carrinho"
+                    onclick="adicionarAoCarrinho('Fralda infantil tam g (34 unidades)', 45.90)">
+                    Adicionar ao Carrinho
+                </button>
+            </article>
+        </section>
+
+    </main>
+
+    <section class="rodape">
+        <footer>
+            <p>Farma Click - Florianópolis</p>
+            <p>Endereço: Servidão Manuel monteiro 03, Canasvieiras - Florianópolis</p>
+            <p>Contato: (48 99641-1475)</p>
+            <p>&copy; 2026 Farma Click. Todos os direitos reservados</p>
+        </footer>
+    </section>
 </body>
+
 </html>
