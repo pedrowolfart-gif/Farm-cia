@@ -1,14 +1,14 @@
-function adicionarAoCarrinho(nome, preco) {
+function adicionarAoCarrinho(imagem, nome, preco) {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
 
     let precoNumerico = parseFloat(preco);
-
     let produtoExistente = carrinho.find(item => item.nome === nome);
 
     if (produtoExistente) {
         produtoExistente.quantidade += 1;
     } else {
         carrinho.push({
+            imagem: imagem,
             nome: nome,
             preco: precoNumerico,
             quantidade: 1
@@ -19,6 +19,7 @@ function adicionarAoCarrinho(nome, preco) {
     alert(`${nome} foi adicionado ao seu carrinho!`);
 }
 
+// 2. Função que desenha a tabela dentro do carrinho.html
 function renderizarCarrinho() {
     const tabelaBody = document.getElementById('lista-carrinho');
     const elementoTotal = document.getElementById('valor-total');
@@ -30,7 +31,7 @@ function renderizarCarrinho() {
     if (carrinho.length === 0) {
         tabelaBody.innerHTML = `
             <tr>
-                <td colspan="5" style="text-align: center; padding: 20px;">Seu carrinho está vazio.</td>
+                <td colspan="6" style="text-align: center; padding: 20px;">Seu carrinho está vazio.</td>
             </tr>
         `;
         if (elementoTotal) elementoTotal.innerText = "R$ 0,00";
@@ -45,8 +46,14 @@ function renderizarCarrinho() {
         let subtotal = precoValido * produto.quantidade;
         totalGeral += subtotal;
 
+        // Se o produto não tiver imagem gravada (itens antigos), usa uma imagem padrão vazia
+        let imagemSrc = produto.imagem || '../img/logo da farmácia.jpg';
+
         tabelaBody.innerHTML += `
             <tr>
+                <td>
+                    <img src="${imagemSrc}" alt="${produto.nome}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                </td>
                 <td><strong>${produto.nome}</strong></td>
                 <td>R$ ${precoValido.toFixed(2).replace('.', ',')}</td>
                 <td>
@@ -65,6 +72,7 @@ function renderizarCarrinho() {
     }
 }
 
+// 3. Funções de controle
 function alterarQuantidade(index, novaQtd) {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
     let quantidade = parseInt(novaQtd);
