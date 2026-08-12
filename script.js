@@ -23,6 +23,9 @@ function adicionarAoCarrinho(imagem, nome, preco) {
 
 function renderizarCarrinho() {
     const tabelaBody = document.getElementById('lista-carrinho');
+    const elemSubtotal = document.getElementById('subtotal-produtos');
+    const elemDesconto = document.getElementById('valor-desconto');
+    const elemFreteDisplay = document.getElementById('valor-frete-display');
     const elementoTotal = document.getElementById('valor-total');
     const msgFrete = document.getElementById('mensagem-frete');
 
@@ -36,6 +39,9 @@ function renderizarCarrinho() {
                 <td colspan="6" style="text-align: center; padding: 20px;">Seu carrinho está vazio.</td>
             </tr>
         `;
+        if (elemSubtotal) elemSubtotal.innerText = "R$ 0,00";
+        if (elemDesconto) elemDesconto.innerText = "- R$ 0,00";
+        if (elemFreteDisplay) elemFreteDisplay.innerText = "R$ 0,00";
         if (elementoTotal) elementoTotal.innerText = "R$ 0,00";
         if (msgFrete) msgFrete.innerText = "";
         valorFreteGlobal = 0;
@@ -50,7 +56,7 @@ function renderizarCarrinho() {
         let subtotal = precoValido * produto.quantidade;
         subtotalGeral += subtotal;
 
-        let imagemSrc = produto.imagem || '../img/logo da farmácia.jpg';
+        let imagemSrc = produto.imagem || '../img/logo_da_farmácia-removebg-preview.png';
 
         tabelaBody.innerHTML += `
             <tr>
@@ -70,11 +76,20 @@ function renderizarCarrinho() {
         `;
     });
 
-    let totalComFrete = subtotalGeral + valorFreteGlobal;
+    let valorDesconto = 0;
 
-    if (elementoTotal) {
-        elementoTotal.innerText = `R$ ${totalComFrete.toFixed(2).replace('.', ',')}`;
+    if (subtotalGeral >= 100) {
+        valorDesconto = subtotalGeral * 0.10;
+    } else {
+        valorDesconto = 0;
     }
+
+    let totalComFreteEDesconto = (subtotalGeral - valorDesconto) + valorFreteGlobal;
+
+    if (elemSubtotal) elemSubtotal.innerText = `R$ ${subtotalGeral.toFixed(2).replace('.', ',')}`;
+    if (elemDesconto) elemDesconto.innerText = `- R$ ${valorDesconto.toFixed(2).replace('.', ',')}`;
+    if (elemFreteDisplay) elemFreteDisplay.innerText = `R$ ${valorFreteGlobal.toFixed(2).replace('.', ',')}`;
+    if (elementoTotal) elementoTotal.innerText = `R$ ${totalComFreteEDesconto.toFixed(2).replace('.', ',')}`;
 }
 
 function alterarQuantidade(index, novaQtd) {
@@ -152,13 +167,53 @@ function filtrarProdutos() {
     });
 }
 
+function aplicarFiltroCategoriaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const categoriaUrl = params.get('categoria');
+
+    if (!categoriaUrl) return;
+
+    const cards = document.querySelectorAll('.card-produto');
+    const inputBusca = document.getElementById('campo-busca');
+    const termoBusca = categoriaUrl.toLowerCase();
+
+    cards.forEach(card => {
+        const categoriaTag = card.querySelector('.categoria-tag') ? card.querySelector('.categoria-tag').innerText.toLowerCase() : '';
+        const titulo = card.querySelector('h3') ? card.querySelector('h3').innerText.toLowerCase() : '';
+
+        if (categoriaTag.includes(termoBusca) || titulo.includes(termoBusca)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (inputBusca) {
+        inputBusca.value = categoriaUrl;
+    }
+}
+
 function enviarReceita(event) {
     event.preventDefault();
 
     const nomeInput = document.getElementById('nome');
-    const nome = nomeInput ? nomeInput.value : 'Cliente';
+    const telefoneInput = document.getElementById('telefone');
+    const arquivoInput = document.getElementById('arquivo-receita');
 
-    alert(`Obrigado, ${nome}! Sua receita foi enviada com sucesso. Nossa equipe entrará em contato via WhatsApp para passar o orçamento.`);
+    const nome = nomeInput ? nomeInput.value.trim() : '';
+    const telefone = telefoneInput ? telefoneInput.value.trim() : '';
+
+    if (nome === "" || telefone === "") {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    if (!arquivoInput || arquivoInput.files.length === 0) {
+        alert("Por favor, selecione o arquivo da sua receita médica.");
+        return;
+    }
+
+    alert(`Obrigado, ${nome}! Sua receita foi enviada com sucesso. Nossa equipe entrará em contato via WhatsApp (${telefone}) para enviar o orçamento.`);
 
     event.target.reset();
 }
@@ -170,7 +225,7 @@ function atualizarContadorCarrinho() {
     let carrinho = JSON.parse(localStorage.getItem('carrinhoFarmaClick')) || [];
     let totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
 
-    elementoContador.innerText = `(${totalItens})`;
+    elementoContador.innerText = `${totalItens}`;
 }
 
 function finalizarCompra() {
@@ -191,37 +246,5 @@ function finalizarCompra() {
 document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrinho();
     atualizarContadorCarrinho();
-});
-
-function aplicarFiltroCategoriaURL() {
-    const params = new URLSearchParams(window.location.search);
-    const categoriaUrl = params.get('categoria');
-
-    if (!categoriaUrl) return;
-
-    const cards = document.querySelectorAll('.card-produto');
-    const inputBusca = document.getElementById('campo-busca');
-
-    const termoBusca = categoriaUrl.toLowerCase();
-
-    cards.forEach(card => {
-        const categoriaTag = card.querySelector('.categoria-tag') ? card.querySelector('.categoria-tag').innerText.toLowerCase() : '';
-        const titulo = card.querySelector('h3') ? card.querySelector('h3').innerText.toLowerCase() : '';
-
-        if (categoriaTag.includes(termoBusca) || titulo.includes(termoBusca)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-
-    if (inputBusca) {
-        inputBusca.value = categoriaUrl;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    renderizarCarrinho();
-    atualizarContadorCarrinho();
-    aplicarFiltroCategoriaURL(); // <-- Adicionado aqui!
+    aplicarFiltroCategoriaURL();
 });

@@ -27,10 +27,10 @@
 
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html">Início</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="carrinho.html" class="btn-carrinho-header">Carrinho <span
-                            id="contador-carrinho">(0)</span></a></li>
+                <li><a href="carrinho.html" class="btn-carrinho-header ativo">Carrinho <span
+                            id="contador-carrinho">0</span></a></li>
                 <li><a href="receitas.html">Receitas Médicas</a></li>
             </ul>
         </nav>
@@ -45,7 +45,7 @@
                     <th>Produto</th>
                     <th>Preço unitario</th>
                     <th>Quantidade</th>
-                    <th>Subetotal</th>
+                    <th>Subtotal</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -62,26 +62,49 @@
                 <p id="mensagem-frete" style="margin-top: 8px; font-weight: bold;"></p>
             </div>
 
-            <div class="total-compra">
+            <<div class="total-compra">
                 <h3>Resumo do pedido</h3>
 
-                <h4>Total: <span id="valor-total">R$ 0,00</span></h4>
+                <div class="detalhes-preco" style="margin: 15px 0; font-size: 0.95rem; line-height: 1.8;">
+                    <p style="display: flex; justify-content: space-between; margin: 5px 0;">
+                        <span>Subtotal dos produtos:</span>
+                        <strong id="subtotal-produtos">R$ 0,00</strong>
+                    </p>
+                    <p style="display: flex; justify-content: space-between; margin: 5px 0; color: #00875a;">
+                        <span>Desconto (10%):</span>
+                        <strong id="valor-desconto">- R$ 0,00</strong>
+                    </p>
+                    <p style="display: flex; justify-content: space-between; margin: 5px 0;">
+                        <span>Frete / Entrega:</span>
+                        <strong id="valor-frete-display">R$ 0,00</strong>
+                    </p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
+
+                <h4
+                    style="display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; margin-top: 10px;">
+                    <span>Total:</span>
+                    <span id="valor-total" style="color: #00875a; font-size: 1.4rem;">R$ 0,00</span>
+                </h4>
 
                 <div class="botoes-carrinho">
                     <a href="produtos.html" class="btn-continuar">Continuar comprando</a>
                     <button type="button" class="bnt-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
                 </div>
+
             </div>
         </section>
 
     </main>
 
     <section class="rodape">
-        <footer>
+       <footer>
             <p>Farma Click - Florianópolis</p>
             <p>Endereço: Servidão Manuel monteiro 03, Canasvieiras - Florianópolis</p>
             <p>Contato: (48 99641-1475)</p>
             <p>&copy; 2026 Farma Click. Todos os direitos reservados</p>
+            <P>Grupo: Pedro w, Tomás, João Gaia e Lorenzo Valentini</P>
         </footer>
     </section>
 </body>
