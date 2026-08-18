@@ -248,3 +248,18 @@ document.addEventListener("DOMContentLoaded", () => {
     atualizarContadorCarrinho();
     aplicarFiltroCategoriaURL();
 });
+
+function fazerLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
+    alert(`Login efetuado com sucesso para ${email}!`);
+    window.location.href = "index.html";
+}
+
+function cadastrarUsuario(event) {
+    event.preventDefault();
+    const nome = document.getElementById('cad-nome').value;
+    alert(`Cadastro realizado com sucesso! Seja bem-vindo(a), ${nome}.`);
+    window.location.href = "index.html";
+}
+

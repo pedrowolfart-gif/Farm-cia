@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Login - Farma Click</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="../img/logo_da_farmácia-removebg-preview.png" alt="logo da farmácia">
+            </a>
+        </div>
+
+        <div class="buscar-header">
+            <input type="text" id="campo-busca" placeholder="O que deseja encontrar?" onkeyup="filtrarProdutos()">
+            <button type="button" onclick="filtrarProdutos()">Buscar</button>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="carrinho.html" class="btn-carrinho-header">Carrinho <span
+                            id="contador-carrinho">0</span></a></li>
+                <li><a href="receitas.html">Receitas Médicas</a></li>
+                <li><a href="login.html" class="ativo">Entrar / Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="conteiner-auth">
+        <section class="card-auth">
+            <h2>Já tenho uma conta</h2>
+            <form onsubmit="fazerLogin(event)">
+                <div class="campo-auth">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="seu@email.com" required>
+                </div>
+                <div class="campo-auth">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" placeholder="Sua senha" required>
+                </div>
+                <button type="submit" class="btn-auth">Entrar na Conta</button>
+            </form>
+        </section>
+
+        <section class="card-auth">
+            <h2>Criar nova conta</h2>
+            <form onsubmit="cadastrarUsuario(event)">
+                <div class="campo-auth">
+                    <label for="cad-nome">Nome Completo</label>
+                    <input type="text" id="cad-nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-auth">
+                    <label for="cad-email">E-mail</label>
+                    <input type="email" id="cad-email" placeholder="seu@email.com" required>
+                </div>
+                <div class="campo-auth">
+                    <label for="cad-senha">Senha</label>
+                    <input type="password" id="cad-senha" placeholder="Crie uma senha" required>
+                </div>
+                <button type="submit" class="btn-auth btn-cadastrar">Criar Meu Cadastro</button>
+            </form>
+        </section>
+    </main>
+
+    <section class="rodape">
+        <footer>
+            <p>Farma Click - Florianópolis</p>
+            <p>Endereço: Servidão Manuel monteiro 03, Canasvieiras - Florianópolis</p>
+            <p>Contato: (48 99641-1475)</p>
+            <p>&copy; 2026 Farma Click. Todos os direitos reservados</p>
+            <p>Grupo: Pedro w, Tomás, João Gaia e Lorenzo Valentini</p>
+        </footer>
+    </section>
+</body>
+
+</html>
